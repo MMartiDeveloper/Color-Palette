@@ -10,16 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var palette: UIView!
+
+    var currentRed: Float = 0.5
+    var currentGreen: Float = 0.5
+    var currentBlue: Float = 0.5
+    
+    @IBAction func onSliderChange(_ sender: UISlider) {
+        switch(sender.restorationIdentifier!){
+            case "redSlider":
+                currentRed = sender.value
+            case "greenSlider":
+                currentGreen = sender.value
+            case "blueSlider":
+                currentBlue = sender.value
+            default:
+                break
+        }
+        palette.backgroundColor = UIColor(colorLiteralRed: currentRed, green: currentGreen, blue: currentBlue, alpha: 1)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
